@@ -20,6 +20,11 @@ export default function Sidebar() {
       icon: <FiCalendar />,
       path: "/events",
     },
+    {
+      title: "Cultures",
+      icon: <FiBox />,
+      path: "/cultures",
+    },
   ];
 
   return (

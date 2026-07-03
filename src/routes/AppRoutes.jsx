@@ -8,6 +8,9 @@ import EditProduct from "../pages/products/EditProduct";
 import EventList from "../pages/events/EventList";
 import CreateEvent from "../pages/events/CreateEvent";
 import EditEvent from "../pages/events/EditEvent";
+import CultureList from "../pages/cultures/CultureList";
+import CreateCulture from "../pages/cultures/CreateCulture";
+import EditCulture from "../pages/cultures/EditCulture";
 
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -71,6 +74,30 @@ export default function AppRoutes() {
           element={
             <ProtectedRoute>
               <EditEvent />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cultures"
+          element={
+            <ProtectedRoute>
+              <CultureList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cultures/create"
+          element={
+            <ProtectedRoute>
+              <CreateCulture />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cultures/:id"
+          element={
+            <ProtectedRoute>
+              <EditCulture />
             </ProtectedRoute>
           }
         />

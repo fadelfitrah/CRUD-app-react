@@ -5,6 +5,7 @@ import Card from "../../components/ui/Card";
 import Button from "../../components/ui/Button";
 import { useProducts } from "../../hooks/product/useProducts";
 import { useEvents } from "../../hooks/event/useEvents";
+import { useCultures } from "../../hooks/culture/useCultures";
 import {
   getEventStatus,
   getStatusColor,
@@ -14,16 +15,19 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const { data: products = [] } = useProducts();
   const { data: events = [] } = useEvents();
+  const { data: cultures = [] } = useCultures();
 
   const recentProducts = products.slice(0, 5);
   const recentEvents = events.slice(0, 5);
+  const recentCultures = cultures.slice(0, 5);
 
   return (
     <DashboardLayout>
       {/* Stat Cards */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2 mb-8">
+      <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-3 mb-8">
         <StatCard title="Total Produk" value={products.length} />
         <StatCard title="Total Event" value={events.length} />
+        <StatCard title="Total Budaya" value={cultures.length} />
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
@@ -177,6 +181,86 @@ export default function Dashboard() {
                       className="px-4 py-8 text-center text-slate-500"
                     >
                       Belum ada event
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </Card>
+      </div>
+
+      {/* Culture Table */}
+      <div className="mt-6">
+        <Card>
+          <div className="mb-6 flex items-center justify-between">
+            <div>
+              <h3 className="text-lg font-bold text-slate-800">
+                Budaya Terbaru
+              </h3>
+              <p className="mt-1 text-sm text-slate-500">
+                {cultures.length} budaya terdaftar
+              </p>
+            </div>
+            <Button
+              onClick={() => navigate("/cultures")}
+              className="!px-4 !py-2 !text-sm"
+            >
+              Lihat Semua →
+            </Button>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b bg-slate-50">
+                  <th className="px-4 py-3 text-left font-semibold text-slate-600">
+                    Nama Budaya
+                  </th>
+                  <th className="px-4 py-3 text-left font-semibold text-slate-600">
+                    Kategori
+                  </th>
+                  <th className="px-4 py-3 text-left font-semibold text-slate-600">
+                    Gambar
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {recentCultures.length > 0 ? (
+                  recentCultures.map((culture) => (
+                    <tr
+                      key={culture.id}
+                      className="border-b hover:bg-slate-50 cursor-pointer"
+                      onClick={() => navigate(`/cultures/${culture.id}`)}
+                    >
+                      <td className="px-4 py-3 font-medium text-slate-800">
+                        {culture.namaBudaya}
+                      </td>
+                      <td className="px-4 py-3 capitalize text-slate-600">
+                        {culture.kategori}
+                      </td>
+                      <td className="px-4 py-3">
+                        {culture.gambar && (
+                          <img
+                            src={culture.gambar}
+                            alt={culture.namaBudaya}
+                            className="h-10 w-10 rounded-lg object-cover"
+                            onError={(e) => {
+                              e.target.src =
+                                "https://via.placeholder.com/50?text=No+Image";
+                            }}
+                          />
+                        )}
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td
+                      colSpan="3"
+                      className="px-4 py-8 text-center text-slate-500"
+                    >
+                      Belum ada budaya
                     </td>
                   </tr>
                 )}
