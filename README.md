@@ -254,7 +254,7 @@ Silakan melakukan:
 
 GitHub: https://github.com/fadelfitrah
 
-LinkedIn: https://linkedin.com/in/fadel-fitrah-prakon-615396225
+LinkedIn: https://linkedin.com/in/fansuri-fadel-fitrah-prakon-615396225
 
 ---
 
