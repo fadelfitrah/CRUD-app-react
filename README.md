@@ -252,9 +252,9 @@ Silakan melakukan:
 
 **Fadel Fitrah**
 
-GitHub: https://github.com/USERNAME
+GitHub: https://github.com/fadelfitrah
 
-LinkedIn: https://linkedin.com/in/USERNAME
+LinkedIn: https://linkedin.com/in/fadel-fitrah-prakon-615396225
 
 ---
 
